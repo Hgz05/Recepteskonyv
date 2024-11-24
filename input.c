@@ -1,7 +1,7 @@
 //
 // Created by hejag on 23/11/2024.
 //
-
+#include "debugmalloc.h"
 #include "input.h"
 
 #include <stdio.h>

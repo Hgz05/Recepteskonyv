@@ -4,6 +4,7 @@
 
 #ifndef INGRIDIENT_H
 #define INGRIDIENT_H
+#include "debugmalloc.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -22,9 +23,18 @@ typedef enum MeasurementType {
  * Ingrident struct that stores and Ingridient name, Mesurment Type of the ingridient in the form of an enum and an ingridient pointer that is used to make a linked list.
  */
 typedef struct Ingridient {
-    char IngName[40];
-    MeasurementType MType;
-    struct Ingridient *NextNode;
+ /**
+  * The ingridients name.
+  */
+ char IngName[40];
+ /**
+  * The type of the ingridnient.
+  */
+ MeasurementType MType;
+ /**
+  * The pointer to the next Ingridient.
+  */
+ struct Ingridient *NextNode;
 } Ingridient;
 
 /**
@@ -82,5 +92,5 @@ void PrintAllIng(Ingridient *list);
  * Deletes all Ingridients
  * @param list The address of the first element of the Ingridient linked list.
  */
-void DeleteAllIng(Ingridient *list);
+void DeleteAllIng(Ingridient **listPtr, Recipe **RecListPtr);
 #endif //INGRIDIENT_H

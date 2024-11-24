@@ -5,6 +5,7 @@
 #ifndef MENU_H
 #define MENU_H
 #include "Recipe.h"
+#include "debugmalloc.h"
 
 
 void LogoPrinter();

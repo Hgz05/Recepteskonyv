@@ -3,6 +3,7 @@
 //
 
 #include "RecipeIngridient.h"
+#include "debugmalloc.h"
 
 RecipeIngridient* CreateRecipeIngridient(int IngAmount, Ingridient *IngData) {
     RecipeIngridient *Ing = (RecipeIngridient *) malloc(sizeof(RecipeIngridient));
@@ -50,5 +51,12 @@ void DeleteAllRecIng(RecipeIngridient *list) {
             list = list->NextNode;
             free(RecIngToDelete);
         }
+        if(list != NULL) {
+        while(list != NULL) {
+            RecipeIngridient* RecIngToDelete = list;
+            list = list->NextNode;
+            free(RecIngToDelete);
+        }
+    }
     }
 }

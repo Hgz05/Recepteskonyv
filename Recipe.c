@@ -8,7 +8,7 @@
 
 #include "input.h"
 #include "Ingridient.h"
-
+#include "debugmalloc.h"
 Recipe *CreateRecipe(char *Name, bool bIsFav) {
     Recipe *Rec = (Recipe *) malloc(sizeof(Recipe));
     strcpy(Rec->RecName, Name);
@@ -54,6 +54,7 @@ void DeleteRecipe(Recipe **listPtr, Recipe *ToDelete) {
         Recipe* list = *listPtr;
         if(list == ToDelete) {
             *listPtr = ToDelete->NextNode;
+            DeleteAllRecIng(ToDelete->RecIng);
             free(ToDelete);
         }else {
             if (list != NULL) {
@@ -217,5 +218,17 @@ int RecipeListLen(Recipe *list) {
             list = list->NextNode;
         }
         return RecListLen;
+    }
+}
+
+char * BoolFavConverter(bool IsFav) {
+    char* isFavChar = malloc(sizeof(char)*6);
+    if(IsFav == true) {
+        strcpy(isFavChar, "true");
+        return isFavChar;
+    }
+    if(IsFav == false) {
+        strcpy(isFavChar, "false");
+        return isFavChar;
     }
 }

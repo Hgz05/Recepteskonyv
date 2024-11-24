@@ -7,7 +7,8 @@
 #include <stdio.h>
 
 #include "input.h"
-
+#include "debugmalloc.h"
+#include "debugmalloc.h"
 void LogoPrinter() {
     for (int i = 0; i < 11; i++) {
         if (i == 0 || i == 10) {

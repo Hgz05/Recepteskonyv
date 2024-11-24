@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 #include "Recipe.h"
-
+#include "debugmalloc.h"
 Ingridient *CreateIngridient(char *Name, MeasurementType Type) {
     Ingridient *Ing = (Ingridient *) malloc(sizeof(Ingridient));
     strcpy(Ing->IngName, Name);
@@ -118,12 +118,16 @@ void PrintAllIng(Ingridient *list) {
     }
 }
 
-void DeleteAllIng(Ingridient *list) {
-    if (list != NULL) {
-        while (list != NULL) {
-            Ingridient *ToDelete = list;
-            list = list->NextNode;
-            free(ToDelete);
+void DeleteAllIng(Ingridient **listPtr, Recipe **RecListPtr) {
+    if(listPtr != NULL) {
+        Ingridient* list = *listPtr;
+        if(list != NULL) {
+            Ingridient* Next = NULL;
+            while(list != NULL) {
+                Next = list->NextNode;
+                DeleteIngridient(listPtr,list,RecListPtr);
+                list = Next;
+            }
         }
     }
 }

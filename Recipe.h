@@ -6,15 +6,28 @@
 #include <stdbool.h>
 #include "RecipeIngridient.h"
 #include "Ingridient.h"
+#include "debugmalloc.h"
 
 /**
  * The struct that stores recipe values.
  */
 typedef struct Recipe {
-    char RecName[100];
-    struct Recipe *NextNode;
-    RecipeIngridient *RecIng;
-    bool bIsFavorite;
+ /**
+  * The name of the recipe
+  */
+ char RecName[100];
+ /**
+  * The pointer to the next recipe in the recipe linked list.
+  */
+ struct Recipe *NextNode;
+ /**
+  * The pointer to the first element of the RecipeIngredient linked list.
+  */
+ RecipeIngridient *RecIng;
+ /**
+  * A boolean value that dictates if the recipe is Favorite or not.
+  */
+ bool bIsFavorite;
 } Recipe;
 
 /**
@@ -120,6 +133,11 @@ void DeleteAllRecipe(Recipe *list);
  */
 int RecipeListLen(Recipe *list);
 
-//void PrintIngName(Ingridient *list, int IngridientIndex);
+/**
+ * Converts bool to char value.
+ * @param IsFav bool to be converted.
+ * @return char pointer (string).
+ */
+char* BoolFavConverter(bool IsFav);
 
 #endif //RECIPE_H
