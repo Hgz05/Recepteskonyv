@@ -96,7 +96,18 @@ void RecipePrint(Recipe *PRecipe) {
 }
 
 void FindRecipeByIngs(Recipe *list) {
-    printf("FindRecipeByIngs");
+    printf("FindRecipeByIngs\n");
+    /*int IngCount = 0;
+    printf("Adja meg hany osszetevo alapjan fog keresni\n: ");
+    scanf("%d", IngCount);
+    //char** IngNamePrt = malloc(sizeof)
+    for(int CurrentIngCount = 0 ; CurrentIngCount != IngCount; CurrentIngCount++) {
+        char IngName[40];
+        printf("Osszetevo: \n");
+        scanf("%s\n", IngName);
+        if(FindIngridientByName())
+    }*/
+
 }
 
 void PrintFavRecipes(Recipe *list) {
@@ -195,5 +206,16 @@ void DeleteAllRecipe(Recipe *list) {
             DeleteAllRecIng(ToDelete->RecIng);
             free(ToDelete);
         }
+    }
+}
+
+int RecipeListLen(Recipe *list) {
+    int RecListLen = 0;
+    if(list != NULL) {
+        while(list != NULL) {
+            RecListLen++;
+            list = list->NextNode;
+        }
+        return RecListLen;
     }
 }

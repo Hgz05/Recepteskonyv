@@ -9,18 +9,24 @@
 #include "Ingridient.h"
 #include "Recipe.h"
 
-Ingridient* IngInput();
+Ingridient *IngInput();
 
-Recipe* RecInput(Ingridient* list);
+Recipe *RecInput(Ingridient *list);
 
+/**
+ * The states used for "Osszetevok.txt" file reading.
+ */
 typedef enum IngInputState {
     IName,
     IType,
     CreateIng,
     IReturn
-}IngInputState;
+} IngInputState;
 
-typedef enum  RecInputState {
+/**
+ * The states used for "Receptek.txt" file reading.
+ */
+typedef enum RecInputState {
     RName,
     IsFav,
     IngCount,
@@ -30,13 +36,33 @@ typedef enum  RecInputState {
     CreateRecipeIng,
     RecipeCreation,
     RReturn
-}RecInputState;
+} RecInputState;
 
-MeasurementType IngTypeEnumerator(char* TypeString);
-char* IngTypeDenumerator(MeasurementType Mtype);
-bool IsFavChecker(char* TypeString);
+/**
+ * Converts a string to a MeasurementType enum.
+ * @param TypeString The that will be converted
+ * @return MeasurementType.
+ */
+MeasurementType IngTypeEnumerator(char *TypeString);
 
+/**
+ * Converts MeasurementType enum to a string.
+ * @param Mtype MeasurementType enum that will be converted.
+ * @return Address of the string.
+ */
+char *IngTypeDenumerator(MeasurementType Mtype);
 
+/**
+ * Converts a string to a true or false value.
+ * @param TypeString The string that will be converted.
+ * @return True or false value.
+ */
+bool IsFavChecker(char *TypeString);
+
+/**
+ * Empties a string
+ * @param str The string.
+ */
 void StrKiller(char *str);
 
 #endif //INPUT_H

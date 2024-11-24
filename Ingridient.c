@@ -37,11 +37,25 @@ void AddOrCreateIng(Ingridient **list, Ingridient *ToAdd) {
     }
 }
 
-void DeleteIngridient(Ingridient **listPtr, Ingridient *ToDelete, Recipe** RecListPtr) {
+void DeleteIngridient(Ingridient **listPtr, Ingridient *ToDelete, Recipe **RecListPtr) {
     if (listPtr != NULL && ToDelete != NULL) {
         Ingridient *list = *listPtr;
-        if (list == ToDelete ) {
+        if (list == ToDelete) {
             *listPtr = ToDelete->NextNode;
+            Recipe *RecList = *RecListPtr;
+            Recipe *RecListNext = NULL;
+            while (RecList != NULL) {
+                RecipeIngridient *Tmp = RecList->RecIng;
+                while (Tmp != NULL) {
+                    RecListNext = RecList->NextNode;
+                    if (Tmp->IngData == ToDelete) {
+                        DeleteRecipe(RecListPtr, RecList);
+                        break;
+                    }
+                    Tmp = Tmp->NextNode;
+                }
+                RecList = RecListNext;
+            }
             free(ToDelete);
         } else {
             if (list != NULL) {
@@ -50,17 +64,19 @@ void DeleteIngridient(Ingridient **listPtr, Ingridient *ToDelete, Recipe** RecLi
                 }
                 if (list != NULL) {
                     list->NextNode = ToDelete->NextNode;
-                    Recipe* RecList = *RecListPtr;
+                    Recipe *RecList = *RecListPtr;
+                    Recipe *RecListNext = NULL;
                     while (RecList != NULL) {
                         RecipeIngridient *Tmp = RecList->RecIng;
                         while (Tmp != NULL) {
+                            RecListNext = RecList->NextNode;
                             if (Tmp->IngData == ToDelete) {
                                 DeleteRecipe(RecListPtr, RecList);
                                 break;
                             }
                             Tmp = Tmp->NextNode;
                         }
-                        RecList = RecList->NextNode;
+                        RecList = RecListNext;
                     }
                     free(ToDelete);
                 }

@@ -189,19 +189,19 @@ void FavMenu(Recipe **RecipeList) {
         scanf("%d", &MenuSelection);
         switch (MenuSelection) {
             case(1):
-                PrintFavRecipes(RecipeList);
+                PrintFavRecipes(*RecipeList);
                 break;
             case(2):
                 char AddFavName[100];
                 printf("Kedvenc Recept neve: \n");
                 scanf("%s", AddFavName);
-                SetFavorite(RecipeList, AddFavName, true);
+                SetFavorite(*RecipeList, AddFavName, true);
                 break;
             case(3):
                 char RemFavName[100];
                 printf("Kedvenc Recept neve: \n");
                 scanf("%s", RemFavName);
-                SetFavorite(RecipeList, RemFavName, false);
+                SetFavorite(*RecipeList, RemFavName, false);
                 break;
             case(0):
                 break;
@@ -213,5 +213,11 @@ void FavMenu(Recipe **RecipeList) {
 }
 
 void RandomRecipe(Recipe *RecipeList) {
-    printf("RandomRecipe\n");
+    if(RecipeList != NULL){
+        Recipe* tmp = RecipeList;
+        int RecListLen = RecipeListLen(RecipeList);
+        int random = rand() % RecListLen;
+        for(int i = 0; i<random; tmp = tmp->NextNode ,i++) {}
+        RecipePrint(tmp);
+    }
 }
