@@ -1,0 +1,7 @@
+Name;true;2;IngName;5;darab;;IngName6;1;darab;;
+Name1;false;2;IngName1;3;liter;;IngName5;2;kilogramm;;
+Name2;true;2;IngName2;4;kilogramm;;IngName4;2;liter;;
+Name3;false;2;IngName3;5;darab;;IngName3;6;darab;;
+Name4;false;2;IngName4;6;liter;;IngName2;5;kilogramm;;
+Name5;true;2;IngName5;7;kilogramm;;IngName1;4;liter;;
+Name6;false;2;IngName6;8;darab;;IngName;3;darab;;

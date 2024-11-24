@@ -1,0 +1,3 @@
+C:/Users/hejag/Documents/School Projects/ProgAlap01/NHF/NHFSave/cmake-build-debug/CMakeFiles/NHFSave.dir
+C:/Users/hejag/Documents/School Projects/ProgAlap01/NHF/NHFSave/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/hejag/Documents/School Projects/ProgAlap01/NHF/NHFSave/cmake-build-debug/CMakeFiles/rebuild_cache.dir
