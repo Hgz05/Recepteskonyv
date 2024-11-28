@@ -5,8 +5,7 @@
 #ifndef INGRIDIENT_H
 #define INGRIDIENT_H
 #include "debugmalloc.h"
-#include <stdlib.h>
-#include <string.h>
+
 
 typedef struct Recipe Recipe;
 

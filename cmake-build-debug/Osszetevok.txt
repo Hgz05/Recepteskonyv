@@ -5,4 +5,3 @@ IngName3;darab;
 IngName4;liter;
 IngName5;kilogramm;
 IngName6;darab;
-Tej;darab;

@@ -4,7 +4,6 @@
 
 #ifndef INPUT_H
 #define INPUT_H
-#include <string.h>
 #include "debugmalloc.h"
 #include "Ingridient.h"
 #include "Recipe.h"
