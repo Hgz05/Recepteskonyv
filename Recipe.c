@@ -96,19 +96,49 @@ void RecipePrint(Recipe *PRecipe) {
     }
 }
 
-void FindRecipeByIngs(Recipe *list) {
-    printf("FindRecipeByIngs\n");
-    /*int IngCount = 0;
-    printf("Adja meg hany osszetevo alapjan fog keresni\n: ");
-    scanf("%d", IngCount);
-    //char** IngNamePrt = malloc(sizeof)
-    for(int CurrentIngCount = 0 ; CurrentIngCount != IngCount; CurrentIngCount++) {
-        char IngName[40];
-        printf("Osszetevo: \n");
-        scanf("%s\n", IngName);
-        if(FindIngridientByName())
-    }*/
+void FindRecipeByIngs(Recipe *RecList, Ingridient* IngList) {
+    int SearchIngCount = 0;
+    printf("Hany osszetevo alapjan akarsz keresni?\n");
+    scanf("%d", &SearchIngCount);
+    if(SearchIngCount < 1) {
+        printf("Hibas bemeneti eretek.\n");
+        return;
+    }
+    char** IngridientList = (char**) malloc(SearchIngCount*sizeof(char*));
+    if (SearchIngCount > 0) {
+        for(int i = 0; i < SearchIngCount; i++) {
+            IngridientList[i] = (char*) malloc(51*sizeof(char));
+        }
+    }
+    for(int i = 0; i < SearchIngCount; i++) {
+        printf("Osszetevo %d:", i+1);
+        gets(IngridientList[i]);
+    }
+    Recipe** SearchRecipes = NULL;
+    for(int i = 0; i < SearchIngCount; i++) {
+        if(SearchRecipes == NULL && i == 0 ) {
+            if(FindRecipeByIng(RecList,IngridientList[i] ) != NULL) {
+                
+            }
+        }
+    }
 
+}
+
+Recipe* FindRecipeByIng(Recipe* list, char* IngName) {
+    if(list != NULL) {
+        Recipe* copy = list;
+        while(copy != NULL) {
+            while(copy->RecIng != NULL) {
+                if(strcmp(copy->RecIng->IngData->IngName, IngName) == 0) {
+                    return copy;
+                }
+                copy->RecIng = copy->RecIng->NextNode;
+            }
+            copy = copy->NextNode;
+        }
+    }
+    return NULL;
 }
 
 void PrintFavRecipes(Recipe *list) {
