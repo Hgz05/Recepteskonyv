@@ -96,49 +96,26 @@ void RecipePrint(Recipe *PRecipe) {
     }
 }
 
-void FindRecipeByIngs(Recipe *RecList, Ingridient* IngList) {
-    int SearchIngCount = 0;
-    printf("Hany osszetevo alapjan akarsz keresni?\n");
-    scanf("%d", &SearchIngCount);
-    if(SearchIngCount < 1) {
-        printf("Hibas bemeneti eretek.\n");
-        return;
-    }
-    char** IngridientList = (char**) malloc(SearchIngCount*sizeof(char*));
-    if (SearchIngCount > 0) {
-        for(int i = 0; i < SearchIngCount; i++) {
-            IngridientList[i] = (char*) malloc(51*sizeof(char));
-        }
-    }
-    for(int i = 0; i < SearchIngCount; i++) {
-        printf("Osszetevo %d:", i+1);
-        gets(IngridientList[i]);
-    }
-    Recipe** SearchRecipes = NULL;
-    for(int i = 0; i < SearchIngCount; i++) {
-        if(SearchRecipes == NULL && i == 0 ) {
-            if(FindRecipeByIng(RecList,IngridientList[i] ) != NULL) {
-                
-            }
-        }
-    }
 
-}
 
-Recipe* FindRecipeByIng(Recipe* list, char* IngName) {
+void PrintRecipeByIng(Recipe* list) {
     if(list != NULL) {
-        Recipe* copy = list;
-        while(copy != NULL) {
-            while(copy->RecIng != NULL) {
-                if(strcmp(copy->RecIng->IngData->IngName, IngName) == 0) {
-                    return copy;
+        char IngName[50];
+        printf("Adja meg az osszetevot: \n");
+        scanf("%s", IngName);
+        Recipe* RCopy = NULL;
+        RCopy = list;
+        while(RCopy != NULL) {
+            RecipeIngridient* RICopy = RCopy->RecIng;
+            while(RICopy != NULL) {
+                if(strcmp(RICopy->IngData->IngName, IngName) == 0) {
+                    RecipePrint(FindRecipeByName(list,RCopy->RecName));
                 }
-                copy->RecIng = copy->RecIng->NextNode;
+                RICopy= RICopy->NextNode;
             }
-            copy = copy->NextNode;
+            RCopy = RCopy->NextNode;
         }
     }
-    return NULL;
 }
 
 void PrintFavRecipes(Recipe *list) {

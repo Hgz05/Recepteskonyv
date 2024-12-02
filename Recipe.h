@@ -81,13 +81,10 @@ Recipe *FindRecipeByName(Recipe *list, char *RecipeName);
 void RecipePrint(Recipe *PRecipe);
 
 /**
- * This funcion will find recipes containing the specified ingridients and print them out.
- * @param RecList The address of the first element of the Recipe linked list.
- * @param IngList The address of the first element of the Ingridient linked list.
+ * Prints a recipe containing the specified ingridient.
+ * @param list The address of the first element of the recipe linked list.
  */
-void FindRecipeByIngs(Recipe *RecList, Ingridient* IngList);
-
-Recipe* FindRecipeByIng(Recipe* list, char* IngName);
+void PrintRecipeByIng(Recipe* list);
 
 /**
  * Prints the favorite recipes

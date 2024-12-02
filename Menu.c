@@ -87,7 +87,7 @@ void SearchMenu(Ingridient **IngList, Recipe **RecipeList) {
     do {
         printf("Receptek keresese:\n\n"
             "(1). Nev szerint\n"
-            "(2). Osszetevok Szerint\n"
+            "(2). Osszetevo Szerint\n"
             "(3). Kedvenc Receptek\n"
             "(0). Vissza\n");
         scanf("%d", &MenuSelection);
@@ -99,7 +99,7 @@ void SearchMenu(Ingridient **IngList, Recipe **RecipeList) {
                 RecipePrint(FindRecipeByName(*RecipeList, searchRecipe));
                 break;
             case(2):
-                FindRecipeByIngs(*RecipeList);  //Figure out the logic for this
+                PrintRecipeByIng(*RecipeList);
                 break;
             case(3):
                 PrintFavRecipes(*RecipeList);
