@@ -1,7 +1,4 @@
-IngName;darab;
-IngName1;liter;
 IngName2;kilogramm;
 IngName3;darab;
 IngName4;liter;
 IngName5;kilogramm;
-IngName6;darab;

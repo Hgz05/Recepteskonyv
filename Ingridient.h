@@ -88,8 +88,9 @@ void PrintIngNameByIndex(Ingridient *list, int IngridientIndex);
 void PrintAllIng(Ingridient *list);
 
 /**
- * Deletes all Ingridients
- * @param list The address of the first element of the Ingridient linked list.
+ * Deletes all ingrideients. This will delete all the recipes too
+ * @param listPtr The address of the first element of the Recipe linked list.
+ * @param RecListPtr The address of the first element of the Ingridient linked list.
  */
 void DeleteAllIng(Ingridient **listPtr, Recipe **RecListPtr);
 #endif //INGRIDIENT_H

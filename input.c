@@ -44,7 +44,7 @@ Ingridient *IngInput() {
                     break;
 
                 case(CreateIng):
-                    ingName[ingNameIndex + 1] = '\0';
+                    ingName[ingNameIndex] = '\0';
                     ingType[ingTypeIndex] = '\0';
                     ingNameIndex = 0;
                     ingTypeIndex = 0;
