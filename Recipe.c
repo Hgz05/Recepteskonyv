@@ -9,6 +9,7 @@
 #include "input.h"
 #include "Ingridient.h"
 #include "debugmalloc.h"
+
 Recipe *CreateRecipe(char *Name, bool bIsFav) {
     Recipe *Rec = (Recipe *) malloc(sizeof(Recipe));
     strcpy(Rec->RecName, Name);
@@ -50,22 +51,21 @@ void AddOrCreateRecipe(Recipe **list, Recipe *ToAdd) {
 }
 
 void DeleteRecipe(Recipe **listPtr, Recipe *ToDelete) {
-    if(listPtr != NULL && ToDelete != NULL) {
-        Recipe* list = *listPtr;
-        if(list == ToDelete) {
+    if (listPtr != NULL && ToDelete != NULL) {
+        Recipe *list = *listPtr;
+        if (list == ToDelete) {
             *listPtr = ToDelete->NextNode;
             DeleteAllRecIng(ToDelete->RecIng);
             free(ToDelete);
-        }else {
+        } else {
             if (list != NULL) {
-                while (list->NextNode != ToDelete && list != NULL) {
+                while (list->NextNode != ToDelete) {
                     list = list->NextNode;
                 }
-                if (list != NULL) {
-                    list->NextNode = ToDelete->NextNode;
-                    DeleteAllRecIng(ToDelete->RecIng);
-                    free(ToDelete);
-                }
+
+                list->NextNode = ToDelete->NextNode;
+                DeleteAllRecIng(ToDelete->RecIng);
+                free(ToDelete);
             }
         }
     }
@@ -97,21 +97,20 @@ void RecipePrint(Recipe *PRecipe) {
 }
 
 
-
-void PrintRecipeByIng(Recipe* list) {
-    if(list != NULL) {
+void PrintRecipeByIng(Recipe *list) {
+    if (list != NULL) {
         char IngName[50];
         printf("Adja meg az osszetevot: \n");
         scanf("%s", IngName);
-        Recipe* RCopy = NULL;
+        Recipe *RCopy = NULL;
         RCopy = list;
-        while(RCopy != NULL) {
-            RecipeIngridient* RICopy = RCopy->RecIng;
-            while(RICopy != NULL) {
-                if(strcmp(RICopy->IngData->IngName, IngName) == 0) {
-                    RecipePrint(FindRecipeByName(list,RCopy->RecName));
+        while (RCopy != NULL) {
+            RecipeIngridient *RICopy = RCopy->RecIng;
+            while (RICopy != NULL) {
+                if (strcmp(RICopy->IngData->IngName, IngName) == 0) {
+                    RecipePrint(FindRecipeByName(list, RCopy->RecName));
                 }
-                RICopy= RICopy->NextNode;
+                RICopy = RICopy->NextNode;
             }
             RCopy = RCopy->NextNode;
         }
@@ -196,11 +195,11 @@ void AddRecipeFromIO(Ingridient *IngList, Recipe *RecList) {
     AddRecipeTo(RecList, NewRecipe);
 }
 
-bool AddRecipeFromIOIsFav(char* IsFav) {
-    if (strcmp("igen",IsFav) == 0) {
+bool AddRecipeFromIOIsFav(char *IsFav) {
+    if (strcmp("igen", IsFav) == 0) {
         return true;
     }
-    if (strcmp("nem",IsFav) == 0) {
+    if (strcmp("nem", IsFav) == 0) {
         return false;
     }
     return false;
@@ -219,23 +218,26 @@ void DeleteAllRecipe(Recipe *list) {
 
 int RecipeListLen(Recipe *list) {
     int RecListLen = 0;
-    if(list != NULL) {
-        while(list != NULL) {
+    if (list != NULL) {
+        while (list != NULL) {
             RecListLen++;
             list = list->NextNode;
         }
         return RecListLen;
     }
+    return -1;
 }
 
-char * BoolFavConverter(bool IsFav) {
-    char* isFavChar = malloc(sizeof(char)*6);
-    if(IsFav == true) {
+char *BoolFavConverter(bool IsFav) {
+    char *isFavChar = malloc(sizeof(char)*6);
+    if (IsFav == true) {
         strcpy(isFavChar, "true");
         return isFavChar;
     }
-    if(IsFav == false) {
+    if (IsFav == false) {
         strcpy(isFavChar, "false");
         return isFavChar;
     }
+    free(isFavChar);
+    return NULL;
 }

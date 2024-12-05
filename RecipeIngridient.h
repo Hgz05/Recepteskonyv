@@ -4,7 +4,6 @@
 #ifndef RECIPEINGRIDIENT_H
 #define RECIPEINGRIDIENT_H
 #include "Ingridient.h"
-#include "debugmalloc.h"
 /**
  * A wrapper struct that connects the Ingridient stuct and the Recipe struct and it stores ingridient amount. The IngData points to the selected Ingridient. The NextNode is used to point to the next element of the RecipeIngridinent linked list.
  */

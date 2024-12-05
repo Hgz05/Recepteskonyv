@@ -58,8 +58,6 @@ Ingridient *IngInput() {
                     StrKiller(ingType);
                     next_state = IName;
                     break;
-                default:
-                    break;
             }
         }
         next_state = IReturn;
