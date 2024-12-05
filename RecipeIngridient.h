@@ -59,6 +59,5 @@ RecipeIngridient *FindRecipeIngridientByName(RecipeIngridient *list, char *IngNa
  */
 void DeleteAllRecIng(RecipeIngridient *list);
 
-//void PrintIngName(Ingridient *list, int IngridientIndex);
 
 #endif //RECIPEINGRIDIENT_H

@@ -22,7 +22,6 @@ int main(void) {
     } RecFileIterator;
 
     Ingridient *ElsoIngElem = IngInput();
-    //PrintIngName(ElsoIngElem, 6);
     Recipe *ElsoRecELem = RecInput(ElsoIngElem);
     if (MainMenu(&ElsoIngElem, &ElsoRecELem) == 0) {
         FILE *FIP = fopen("Osszetevok.txt", "w");
@@ -40,7 +39,7 @@ int main(void) {
 
                         case(IngType):
                             char *IngTypeChar = IngTypeDenumerator(IngCopy->MType);
-                            fprintf(FIP, IngTypeChar); // WIll not convert properly
+                            fprintf(FIP, IngTypeChar);
                             fprintf(FIP, ";");
                             if (IngCopy->NextNode != NULL) {
                                 fprintf(FIP, "\n");

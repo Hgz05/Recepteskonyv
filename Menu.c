@@ -48,7 +48,6 @@ void LogoPrinter() {
 
 int MainMenu(Ingridient** IngListPtr, Recipe **RecipeList) {
     int MenuSelection = 0;
-    // Ingridient* IngList = *IngListPtr;
     do {
         LogoPrinter();
         printf("\n(1). Recept keresese\n"
