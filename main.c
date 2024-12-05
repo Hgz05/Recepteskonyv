@@ -47,6 +47,9 @@ int main(void) {
                             free(IngTypeChar);
                             INext_State = IngLineBreak;
                             break;
+
+                        case(IngLineBreak):
+                            break;
                     }
                 } while (INext_State != IngLineBreak);
                 INext_State = IngName;
@@ -104,6 +107,9 @@ int main(void) {
                                 fprintf(FRP, "\n");
                             }
                             RecNext_State = RecLineBreak;
+                            break;
+
+                        case(RecLineBreak):
                             break;
                     }
                 } while (RecNext_State != RecLineBreak);

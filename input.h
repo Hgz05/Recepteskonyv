@@ -18,8 +18,7 @@ Recipe *RecInput(Ingridient *list);
 typedef enum IngInputState {
     IName,
     IType,
-    CreateIng,
-    IReturn
+    CreateIng
 } IngInputState;
 
 /**
@@ -33,8 +32,7 @@ typedef enum RecInputState {
     RecipeIngNumber,
     RecipeIngType,
     CreateRecipeIng,
-    RecipeCreation,
-    RReturn
+    RecipeCreation
 } RecInputState;
 
 /**
